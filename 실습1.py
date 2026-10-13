@@ -1,6 +1,5 @@
 from fractions import Fraction
 
-
 def print_matrix(M):
     """첨가행렬 출력"""
     for row in M:
@@ -11,10 +10,10 @@ def print_matrix(M):
 
 # 문제의 첨가행렬: 마지막 열은 우변 상수
 M = [
-    [0, -1, -1, 1, 0],
-    [1, 1, 1, 1, 6],
-    [2, 4, 1, -2, -1],
-    [3, 1, -2, 2, 3],
+    [0, -1, -1,  1,  0],
+    [1,  1,  1,  1,  6],
+    [2,  4,  1, -2, -1],
+    [3,  1, -2,  2,  3],
 ]
 
 # 정확한 분수 계산을 위한 자료형 변환
@@ -42,9 +41,11 @@ for col in range(n):
 
     # 3. 피벗 행을 피벗 값으로 나누어 피벗을 1로 만든다.
     pivot = M[col][col]
-    M[col] = [v / pivot for v in M[col]]
-    print(f"R{col + 1} ← R{col + 1} / ({pivot})")
-    print_matrix(M)
+
+    if pivot != 1:
+        M[col] = [v / pivot for v in M[col]]
+        print(f"R{col + 1} ← R{col + 1} / ({pivot})")
+        print_matrix(M)
 
     # 4. 피벗 위와 아래의 원소를 모두 0으로 만든다.
     for r in range(n):
